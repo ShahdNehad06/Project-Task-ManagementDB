@@ -74,9 +74,12 @@ TASKS:
 - Create the primary key: PK_Teams.
 - Add UQ_Teams_TeamName.
 - Define created_date.
-- Do not add a team leader relationship unless the team agrees to include it.
+- Add team_leader_id  FK to Employees with a unique index
 
-DEPENDENCIES: None
+RELATIONSHIPS:
+- Employees 1:1 Teams 
+
+DEPENDENCIES: Employees
 */
 
 -- TODO: Create the Teams table.

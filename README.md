@@ -16,6 +16,17 @@ The database consists of the following seven tables:
 6. `Tasks`
 7. `Time_Logs`
 
+## Database Relationships
+
+- Clients 1:M Projects
+- Teams 1:M Projects
+- Projects 1:M Tasks
+- Employees 1:M Tasks
+- Tasks 1:M Time_Logs
+- Employees 1:M Time_Logs
+- Teams M:M Employees (through `Team_Members`)
+- Teams 1:1 Employees (each team has one leader, and an employee can lead only one team)
+
 ## Project Structure
 
 The project contains three SQL files in the `database` folder:
@@ -67,7 +78,7 @@ The `design` folder contains the ERD and Mapping Diagram images, and `README.md`
 
 - Create the `Clients` table.
 - Define its columns, primary key, and constraints.
-- Insert sample data into Employees.
+- Insert sample data into Clients.
 
 ### 6. Amr Khaled Mohamed Abdelghany
 

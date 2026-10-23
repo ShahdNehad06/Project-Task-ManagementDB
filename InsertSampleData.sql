@@ -68,6 +68,7 @@ TASKS:
 - Insert sample team records.
 - Ensure team names are unique.
 - Follow all table constraints.
+- Use existing Employee IDs for team_leader_id .
 */
 
 -- TODO: Insert sample data into Teams.
