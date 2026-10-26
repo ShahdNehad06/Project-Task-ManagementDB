@@ -40,9 +40,17 @@ DEPENDENCIES: None
 
 -- TODO: Create the Clients table.
 GO
-
-
-
+CREATE TABLE clients (
+    id INT IDENTITY(140,1),
+    client_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    company VARCHAR(100),
+    created_date DATE NOT NULL DEFAULT GETDATE(),
+    CONSTRAINT PK_Clients PRIMARY KEY (id),
+    CONSTRAINT UQ_Clients_Email UNIQUE (email),
+    CONSTRAINT UQ_Clients_Phone UNIQUE (phone)
+);
 
 
 /*

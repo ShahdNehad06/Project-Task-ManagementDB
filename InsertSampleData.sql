@@ -37,9 +37,19 @@ TASKS:
 
 -- TODO: Insert sample data into Clients.
 GO
-
-
-
+INSERT INTO clients (client_name, email, phone, company, created_date)
+VALUES 
+('Farah Gamal','farah.gamal@gmail.com', '01094193970', 'Tech Solutions', '2023-01-15'),
+('Gamila Ahmed','gamilaahmed87@gmail.com', '01123456789', 'Global Trade', '2014-02-01'),
+('Youssef Mohamed','youssef.mohamed@gmail.com', '01234567890', 'Smart Systems', '2020-03-10'),
+('Ziad Mahmoud','ziad.mahmoud@gmail.com', '01211122233', 'Delta Group', '2026-04-05'),
+('Mohamed Ali','mohamedali35@gmail.com', '01544455566', 'Alpha Inc', '2019-05-20'),
+('Sama Omar', 'sama.omar@gmail.com', '01099988877', 'Creative Agency', '2024-06-12'),
+('Yomna Tarek', 'yomna.tarek@gmail.com', '01155566677', 'Future Tech', '2026-07-01'),
+('Ali Ibrahim', 'ali.ibrahim@gmail.com', '01277788899', 'Pioneer Systems', '2021-07-18'),
+('Yassin Khaled', 'yassin.khaled@gmail.com', '01033344455', 'Nexus Media', '2012-08-22'),
+('Assem Sherif', 'assemsherif1@gmail.com', '01144433322', 'Horizon Group', '2009-09-05'),
+('Hana Ahmed','hanaah991@gmail.com', '01012345678', 'Tech Life', '2014-10-15');
 
 
 /*
