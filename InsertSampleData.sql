@@ -66,7 +66,20 @@ TASKS:
 -- TODO: Insert sample data into Employees.
 GO
 
-
+INSERT INTO employees (firstname, lastname, email, job_title, salary, hire_date, is_active)
+VALUES 
+('Ahmed', 'Ali', 'ahmed.ali@test.com', 'Software Engineer', 5000.00, '2023-01-15', 1),
+('Mona', 'Hassan', 'mona.hassan@test.com', 'HR Specialist', 7500.50, '2022-05-20', 1),
+('Omar', 'Khaled', 'omar.khaled@test.com', 'Sales Manager', 6000.00, '2021-11-01', 0),
+('Sara', 'Mahmoud', 'sara.mahmoud@test.com', 'Accountant', 8000.00, '2023-03-10', 1),
+('Youssef', 'Ibrahim', 'youssef.ibrahim@test.com', 'Data Analyst', 6500.00, '2023-08-01', 1),
+('Nourhan', 'Adel', 'nourhan.adel@test.com', 'UI/UX Designer', 7000.00, '2022-09-15', 1),
+('Karim', 'Mostafa', 'karim.mostafa@test.com', 'DevOps Engineer', 9000.00, '2020-04-12', 1),
+('Hoda', 'Samir', 'hoda.samir@test.com', 'Marketing Specialist', 5500.00, '2023-06-05', 0),
+('Tarek', 'Nabil', 'tarek.nabil@test.com', 'Network Admin', 5800.00, '2021-02-28', 1),
+('Rana', 'Emad', 'rana.emad@test.com', 'QA Engineer', 6200.00, '2023-10-01', 1),
+('Ziad', 'Fathy', 'ziad.fathy@test.com', 'Backend Developer', 8500.00, '2022-12-10', 1),
+('Farida', 'Osama', 'farida.osama@test.com', 'Project Manager', 11000.00, '2019-07-01', 1);
 
 
 
