@@ -139,7 +139,17 @@ DEPENDENCIES: Teams, Employees
 
 -- TODO: Create the Team_Members table.
 GO
-
+CREATE TABLE Team_Members
+  (
+    Member_Team_ID INT  NOT NULL,
+    Member_Employee_Id INT  NOT NULL,
+    Join_Date DATE NOT NULL DEFAULT GETDATE(),
+    
+    CONSTRAINT PK_TeamMembers PRIMARY KEY(Member_Team_ID,Member_Employee_Id),
+    CONSTRAINT FK_TeamMembers_Teams FOREIGN KEY (Member_Team_ID) REFERENCES TEAMS(teamID) ,
+    CONSTRAINT FK_TeamMembers_Employees FOREIGN KEY (Member_Employee_Id) REFERENCES EMPLOYEES(EmployeeID)
+    
+  )
 
 
 
