@@ -69,7 +69,18 @@ DEPENDENCIES: None
 -- TODO: Create the Employees table.
 GO
 
-
+CREATE TABLE Employees(
+    EmployeeID INT IDENTITY(1,1) NOT NULL,
+    firstname varchar(50) NOT NULL,
+    lastname varchar(50) NOT NULL,
+    Email varchar(100) NOT NULL,
+    salary decimal(10,2) NOT NULL,
+    job_title Varchar(50),
+    hire_date date default getdate() NOT NULL,
+    is_active bit default 1,
+    constraint pk_employees primary key (employeeID),
+    constraint UQ_employees_email UNIQUE (email)
+);
 
 
 
