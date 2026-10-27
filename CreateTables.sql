@@ -103,7 +103,18 @@ DEPENDENCIES: Employees
 
 -- TODO: Create the Teams table.
 GO
+CREATE TABLE TEAMS (
+  teamID int IDENTITY(1,1) NOT NULL,
+  teamName varchar(100) NOT NULL,
+  teamLeaderID int NOT NULL,
+  createdDate datetime2 NOT NULL DEFAULT GETDATE(),
 
+  CONSTRAINT PK_TEAMS PRIMARY KEY (teamID),
+  CONSTRAINT UQ_TEAMS_TeamName UNIQUE (teamName),
+  CONSTRAINT FK_TEAMS_Employees FOREIGN KEY (teamLeaderID) REFERENCES Employees(EmployeeID)
+); 
+-- (1:1)relationship
+CREATE UNIQUE INDEX IX_TEAMS_TeamLeaderID ON TEAMS(teamLeaderID);
 
 
 

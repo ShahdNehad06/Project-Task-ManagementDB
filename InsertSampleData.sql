@@ -96,7 +96,13 @@ TASKS:
 
 -- TODO: Insert sample data into Teams.
 GO
-
+INSERT INTO Teams (teamName, createdDate, teamLeaderID)
+VALUES
+('DevOps Team', '2021-01-10', 7),
+('UX/UI Team', '2023-03-15', 6),
+('Data Analytics Team', '2024-02-01', 5),
+('Software Development Team', '2024-05-20', 1),
+('Backend Team', '2024-09-01', 11);
 
 
 
