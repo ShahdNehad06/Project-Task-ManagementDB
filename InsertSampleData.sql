@@ -119,13 +119,15 @@ TASKS:
 
 -- TODO: Insert sample data into Team_Members.
 GO
-INSERT INTO Team_Members(Member_Team_ID, Member_Employee_Id,Joine_Date)
+INSERT INTO Team_Members (Member_Team_ID, Member_Employee_Id)
 VALUES
- (1, 2),
- (1, 3),
- (2, 1),
- (2, 2),
- (3, 2);
+   (1, 2),
+   (1, 3),
+   (2, 1),
+   (2, 2),
+   (3, 2),
+   (1, 1),
+   (3, 1);
 
   
 
