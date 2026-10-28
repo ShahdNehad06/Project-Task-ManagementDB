@@ -151,6 +151,14 @@ TASKS:
 -- TODO: Insert sample data into Projects.
 GO
 
+insert into projects (project_name, client_id, team_id, start_date, end_date, budget, status)
+values
+    ('database management system',  140, 1, '2026-08-01', '2026-12-31', 45000.00,  'active'),
+    ('e-commerce website',          141, 2, '2026-10-01', '2027-03-31', 120000.00, 'active'),
+    ('client reporting dashboard',  142, 1, '2026-09-15', null,         30000.00,  'planning'),
+    ('mobile app redesign',         143, 3, '2026-05-01', '2026-09-30', 75000.00,  'completed'),
+    ('legacy system migration',     144, 2, '2026-06-01', '2026-08-15', 60000.00,  'cancelled');
+
 
 
 
@@ -170,7 +178,18 @@ TASKS:
 GO
 
 
-
+insert into tasks (project_id, assigned_to, title, priority, status, due_date)
+values
+    (1, 1,    'set up database server environment',        'high',   'done',        '2026-09-15'),
+    (1, 2,    'automate database deployment pipeline',     'high',   'in progress', '2026-11-05'),
+    (1, 3,    'configure backups and monitoring',          'medium', 'in progress', '2026-11-10'),
+    (1, null, 'write deployment documentation',            'low',    'to do',       null),
+    (2, 2,    'design login page wireframes',              'high',   'to do',       '2026-11-20'),
+    (2, 4,    'design user roles and permissions screens', 'medium', 'to do',       '2026-11-25'),
+    (2, 5,    'run usability testing on checkout flow',    'high',   'in progress', '2026-11-15'),
+    (3, 1,    'gather infrastructure requirements',        'medium', 'done',        '2026-10-01'),
+    (3, null, 'plan dashboard deployment milestones',      'low',    'to do',       null),
+    (3, 3,    'set up ci/cd pipeline for the dashboard',   'medium', 'to do',       '2026-12-01');
 
 
 /*

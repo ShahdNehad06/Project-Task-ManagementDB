@@ -178,7 +178,33 @@ DEPENDENCIES: Clients, Teams
 -- TODO: Create the Projects table.
 GO
 
+create table projects (
+    id            int            identity(1,1) not null,
+    project_name  varchar(100)   not null,
+    client_id     int            not null,
+    team_id       int            not null,
+   [ start_date ]   date           not null,
+    end_date      date           null,
+    budget        decimal(12,2)  not null,
+   [ status ]       varchar(20)    not null,
 
+    constraint pk_projects primary key (id),
+
+    constraint fk_projects_clients
+        foreign key (client_id) references clients(id),
+
+    constraint fk_projects_teams
+        foreign key (team_id) references teams(teamid),
+
+    constraint ck_projects_budget
+        check (budget >= 0),
+
+    constraint ck_projects_dates
+        check (end_date is null or end_date >= [ start_date ]),
+
+    constraint ck_projects_status
+        check ([ status ] in ('planning', 'active', 'on hold', 'completed', 'cancelled'))
+);
 
 
 
@@ -195,6 +221,7 @@ TASKS:
 - Define priority and status.
 - Consider CHECK constraints for priority and status.
 
+
 RELATIONSHIPS:
 - Projects 1:M Tasks
 - Employees 1:M Tasks
@@ -205,7 +232,21 @@ DEPENDENCIES: Projects, Employees
 -- TODO: Create the Tasks table.
 GO
 
+create table tasks (
+    id           int           identity(1,1) not null,
+    project_id   int           not null,
+    assigned_to  int           null,
+    title        varchar(100)  not null,
+    [priority]   varchar(10)   not null,
+    [status]     varchar(20)   not null,
+    due_date     date          null,
 
+    constraint pk_tasks primary key (id),
+    constraint fk_tasks_projects foreign key (project_id) references projects(id),
+    constraint fk_tasks_employees foreign key (assigned_to) references employees(employeeid),
+    constraint ck_tasks_priority check ([priority] in ('low', 'medium', 'high')),
+    constraint ck_tasks_status check ([status] in ('to do', 'in progress', 'done'))
+);
 
 
 
