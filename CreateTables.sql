@@ -271,6 +271,19 @@ DEPENDENCIES: Tasks, Employees
 */
 
 -- TODO: Create the Time_Logs table.
+CREATE TABLE Time_Logs (
+  logID int IDENTITY(1,1) NOT NULL,
+  taskID int NOT NULL,
+  employeeID int NOT NULL,
+  logDate date NOT NULL DEFAULT GETDATE(),
+  hoursWorked decimal(4,2) NOT NULL,
+  notes varchar(250),
+ 
+  CONSTRAINT PK_TimeLogs PRIMARY KEY (logID),
+  CONSTRAINT FK_TimeLogs_Tasks FOREIGN KEY (taskID) REFERENCES tasks(id),
+  CONSTRAINT FK_TimeLogs_Employees FOREIGN KEY (employeeID) REFERENCES Employees(EmployeeID),
+  CONSTRAINT CK_TimeLogs_HoursWorked CHECK (hoursWorked > 0 AND hoursWorked <= 24)
+);
 GO
 
 

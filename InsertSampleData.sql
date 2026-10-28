@@ -151,7 +151,7 @@ TASKS:
 -- TODO: Insert sample data into Projects.
 GO
 
-insert into projects (project_name, client_id, team_id, start_date, end_date, budget, status)
+insert into projects (project_name, client_id, team_id, [ start_date ], end_date, budget, [ status ])
 values
     ('database management system',  140, 1, '2026-08-01', '2026-12-31', 45000.00,  'active'),
     ('e-commerce website',          141, 2, '2026-10-01', '2027-03-31', 120000.00, 'active'),
@@ -178,7 +178,7 @@ TASKS:
 GO
 
 
-insert into tasks (project_id, assigned_to, title, priority, status, due_date)
+insert into tasks (project_id, assigned_to, title, priority, [status], due_date)
 values
     (1, 1,    'set up database server environment',        'high',   'done',        '2026-09-15'),
     (1, 2,    'automate database deployment pipeline',     'high',   'in progress', '2026-11-05'),
@@ -204,6 +204,17 @@ TASKS:
 */
 
 -- TODO: Insert sample data into Time_Logs.
+INSERT INTO Time_Logs (taskID, employeeID, logDate, hoursWorked, notes)
+VALUES
+(1, 1, '2026-08-05', 4.50, 'Prepared the server environment'),
+(1, 1, '2026-08-12', 6.00, 'Set up user access for the environment'),
+(1, 1, '2026-09-10', 3.25, 'Final testing of the environment'),
+(2, 2, '2026-10-05', 5.00, 'Started working on the deployment pipeline'),
+(2, 2, '2026-10-12', 7.50, NULL),
+(3, 3, '2026-10-15', 4.00, 'Configured backups and monitoring'),
+(7, 5, '2026-10-18', 6.50, 'Tested the checkout flow with 5 users'),
+(8, 1, '2026-09-28', 3.00, 'Collected infrastructure requirements'),
+(8, 1, '2026-09-30', 2.50, NULL);
 GO
 
 
@@ -224,10 +235,50 @@ TASKS:
 */
 
 -- TODO: Add SELECT queries to verify the inserted data.
-
+--print all tables 
+SELECT * FROM clients;
+SELECT * FROM Employees;
+SELECT * FROM TEAMS;
+SELECT * FROM Team_Members;
+SELECT * FROM projects;
+SELECT * FROM tasks;
+SELECT * FROM Time_Logs;
 GO
 
 -- TODO: Add JOIN queries to test table relationships.
+-- each team with its leader name
+SELECT t.teamName, e.firstname, e.lastname
+FROM TEAMS t
+JOIN Employees e ON t.teamLeaderID = e.EmployeeID;
 
+-- members of each team
+SELECT t.teamName, e.firstname, e.lastname
+FROM Team_Members tm
+JOIN TEAMS t ON tm.Member_Team_ID = t.teamID
+JOIN Employees e ON tm.Member_Employee_Id = e.EmployeeID;
+
+-- each project with its client and team
+SELECT p.project_name, c.client_name, t.teamName
+FROM projects p
+JOIN clients c ON p.client_id = c.id
+JOIN TEAMS t ON p.team_id = t.teamID;
+
+-- tasks with their project and the employee assigned to them
+SELECT tk.title, p.project_name, e.firstname
+FROM tasks tk
+JOIN projects p ON tk.project_id = p.id
+LEFT JOIN Employees e ON tk.assigned_to = e.EmployeeID;
+
+-- time logs with the task and the employee
+SELECT tl.logDate, tk.title, e.firstname, tl.hoursWorked, tl.notes
+FROM Time_Logs tl
+JOIN tasks tk ON tl.taskID = tk.id
+JOIN Employees e ON tl.employeeID = e.EmployeeID;
+
+-- total hours for each employee
+SELECT e.firstname, SUM(tl.hoursWorked) AS total_hours
+FROM Time_Logs tl
+JOIN Employees e ON tl.employeeID = e.EmployeeID
+GROUP BY e.firstname;
 GO
 
