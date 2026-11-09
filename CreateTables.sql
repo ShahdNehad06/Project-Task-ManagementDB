@@ -286,6 +286,16 @@ CREATE TABLE Time_Logs (
 );
 GO
 
+--Alter, Truncate, and Drop
+-- ALTER: add a column
+ALTER TABLE Employees ADD phone VARCHAR(20);
+
+-- TRUNCATE: delete all rows
+TRUNCATE TABLE Time_Logs;
+
+-- DROP: delete the table
+DROP TABLE Time_Logs;
+
 
 
 
