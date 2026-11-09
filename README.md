@@ -32,9 +32,8 @@ The database consists of the following seven tables:
 The project contains two SQL files in the `database` folder:
 
 - `CreateDatabase.sql`: Database storage files configuration.
-- `CreateTables.sql`: Creation of the seven tables and their constraints.
-
-The `design` folder contains the ERD and Mapping Diagram images, and `README.md` provides an overview of the project and team responsibilities.
+- **`CreateTables.sql`**: Creates the seven database tables, including their columns, data types, primary keys, foreign keys, and named constraints. It also includes simple examples of the `ALTER`, `TRUNCATE`, and `DROP` commands at the end of the file.
+  The `design` folder contains the ERD and Mapping Diagram images
 
 ### SQL Files Description
 
@@ -43,8 +42,10 @@ The `design` folder contains the ERD and Mapping Diagram images, and `README.md`
 
 ### Design Files
 
-- **`ERD`**: The Entity Relationship Diagram showing the entities and their relationships.
-- **`Mapping_Diagram`**: The relational schema mapping showing the tables, columns, primary keys, and foreign keys.
+The ERD and the Mapping Diagram were each designed twice: once by hand and once using draw.io.
+
+- **`ERD`**: The Entity Relationship Diagram showing the entities and their relationships (hand-drawn version and draw.io version).
+- **`Mapping_Diagram`**: The relational schema mapping showing the tables, columns, primary keys, and foreign keys (hand-drawn version and draw.io version).
 
 ## Team Members and Responsibilities
 
